@@ -5,27 +5,34 @@ import ButtonComponent from '../../components/ButtonComponent/ButtonComponent'
 import imageLogo from '../../assets/images/logo-login.png'
 import { Image } from 'antd'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from "react-redux";
+import { actCreateNewUser } from '../../redux/slices/userSlice'
 
 const SignUpPage = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmpassword, setConfirmPassword] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const handleOnchangeEmail = (value) => {
     setEmail(value)
   }
   const handleOnchangePassword = (value) => {
     setPassword(value)
   }
-  const handleOnchangeConfirmPassword = (value) => {
-    setConfirmPassword(value)
+  const handleOnChangePhoneNumber = (value) => {
+    setPhoneNumber(value)
   }
-
   const handleNavigateSignin = () => {
     navigate('/sign-in');
   }
   const handleSignUp = () => {
-
+    const formValue = {
+      email: email,
+      password: password,
+      phoneNumber: phoneNumber
+    }
+    dispatch(actCreateNewUser({ formValue, navigate }));
   }
   return (
     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', background: 'grey', height: '100vh' }}>
@@ -35,9 +42,9 @@ const SignUpPage = () => {
           <p>Đăng nhập và tạo tài khoản</p>
           <InputForm style={{ marginBottom: '10px' }} placeholder="abc@gmail.com" value={email} onChange={handleOnchangeEmail} />
           <InputForm placeholder="password" style={{ marginBottom: '10px' }} value={password} onChange={handleOnchangePassword} />
-          <InputForm placeholder="confirm password" value={confirmpassword} onChange={handleOnchangeConfirmPassword} />
+          <InputForm placeholder="phoneNumber" value={phoneNumber} onChange={handleOnChangePhoneNumber} />
           <ButtonComponent
-            disabled={!email.length || !password.length || !confirmpassword.length}
+            disabled={!email.length || !password.length || !phoneNumber.length}
             onClick={handleSignUp}
             size={40}
             styleButton={{
