@@ -1,14 +1,26 @@
 {
-    "user" :[
-        {
-            "id" :1,
-            "username": "Di hoc",
-            "password": "123456"
-        },
-        {
-            "id" :2,
-            "username": "Di choi",
-            "password": "1234567"
-        }
-    ]
+  "users": [
+    {
+      "id": 1,
+      "email": "minhhoang",
+      "password": "123456"
+    },
+    {
+      "id": 2,
+      "email": "tuanngoc",
+      "password": "1234567"
+    },
+    {
+      "email": "minhhoang@gmail.com",
+      "password": "13446",
+      "phoneNumber": "09053164",
+      "id": 3
+    },
+    {
+      "email": "tuanngoc@gmail.com",
+      "password": "123456",
+      "phoneNumber": "09468465",
+      "id": 4
+    }
+  ]
 }
